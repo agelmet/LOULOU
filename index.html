@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Χρυσάνθη Λουλού MSc — Φυσικοθεραπεία · Κλινική Αξιολόγηση & Αθλητική Αποκατάσταση</title>
-<meta name="description" content="Φυσικοθεραπευτήριο Χρυσάνθη Λουλού, MSc. Σύγχρονη, ενεργητική αποκατάσταση με Manual Therapy & θεραπευτική άσκηση. Θεσσαλονίκη (Μπότσαρη 91) & Σοχός. Κατόπιν ραντεβού.">
+<meta name="description" content="Φυσικοθεραπευτήριο Χρυσάνθη Λουλού, MSc. Σύγχρονη, ενεργητική αποκατάσταση με Manual Therapy & θεραπευτική άσκηση. Θεσσαλονίκη (Μπότσαρη 91). Κατόπιν ραντεβού.">
 <meta property="og:title" content="Χρυσάνθη Λουλού MSc — Σύγχρονη Φυσικοθεραπεία">
-<meta property="og:description" content="Η κίνηση ως θεραπεία. Εξατομικευμένη αποκατάσταση με κλινική ματιά. Θεσσαλονίκη & Σοχός.">
+<meta property="og:description" content="Η κίνηση ως θεραπεία. Εξατομικευμένη αποκατάσταση με κλινική ματιά.">
 <meta property="og:image" content="https://raw.githubusercontent.com/agelmet/LOULOU/67181daf9f438d2a6b8662f36a6df749b3f191b1/417524277_795423722606229_3060773725659999764_n.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="https://raw.githubusercontent.com/agelmet/LOULOU/67181daf9f438d2a6b8662f36a6df749b3f191b1/417524277_795423722606229_3060773725659999764_n.jpg">
@@ -66,20 +66,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   transition:opacity .9s var(--ease),visibility .9s;
 }
 #loader.done{opacity:0;visibility:hidden}
-#loader svg{width:clamp(120px,22vw,180px);height:auto}
-#loader .figpath{
-  fill:none;stroke:var(--teal-soft);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:1400;stroke-dashoffset:1400;
-  animation:draw 2.1s var(--ease) forwards;
+#loader .ldlogo{
+  width:clamp(140px,25vw,200px);height:clamp(140px,25vw,200px);border-radius:50%;
+  object-fit:cover;border:2px solid var(--teal-soft);
+  opacity:0;transform:scale(0.85);animation:fadeScale 1.6s var(--ease) forwards;
 }
-@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeScale{to{opacity:1;transform:scale(1)}}
 #loader .ldname{
   font-family:var(--display);color:var(--paper);font-size:clamp(1.1rem,3.4vw,1.5rem);
-  letter-spacing:.02em;opacity:0;animation:fadeUp .8s var(--ease) 1.3s forwards;
+  letter-spacing:.02em;opacity:0;animation:fadeUp .8s var(--ease) .6s forwards;
 }
 #loader .ldsub{
   font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--teal);
-  opacity:0;animation:fadeUp .8s var(--ease) 1.55s forwards;
+  opacity:0;animation:fadeUp .8s var(--ease) .8s forwards;
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -90,13 +89,14 @@ header{
   padding:1.5rem 0;
 }
 header.scrolled{
-  background:rgba(250,247,241,.86);backdrop-filter:blur(14px);
+  background:rgba(250,247,241,.92);backdrop-filter:blur(14px);
   box-shadow:0 1px 0 rgba(19,36,43,.08);padding:.85rem 0;
 }
 .navbar{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brand{display:flex;align-items:center;gap:.7rem;z-index:2}
-.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.5);transition:border-color .5s}
-.scrolled .brand img{border-color:var(--teal)}
+.brand{display:flex;align-items:center;gap:.8rem;z-index:2}
+/* Logo size increased */
+.brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.5);transition:all .5s}
+.scrolled .brand img{width:48px;height:48px;border-color:var(--teal)}
 .brand-txt{display:flex;flex-direction:column;line-height:1.05}
 .brand-txt b{font-family:var(--display);font-size:1.05rem;font-weight:500;color:#fff;transition:color .5s}
 .brand-txt span{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-soft);transition:color .5s}
@@ -138,13 +138,21 @@ header.scrolled{
   transition:clip-path .7s var(--ease);
 }
 .menu-open .mobnav{clip-path:circle(150% at calc(100% - 40px) 40px)}
+/* Close X for mobile menu */
+.mob-close{
+  position:absolute;top:2rem;right:2rem;background:none;border:none;color:var(--teal-soft);
+  font-size:2.5rem;font-weight:300;cursor:pointer;opacity:0;transform:rotate(-90deg);
+  transition:all .6s var(--ease);z-index:1002;
+}
+.mob-close:hover{color:var(--paper)}
+.menu-open .mob-close{opacity:1;transform:rotate(0);transition-delay:.3s}
 .mobnav a{font-family:var(--display);font-size:clamp(1.8rem,8vw,2.6rem);color:var(--paper);opacity:0;transform:translateX(-20px);transition:.5s var(--ease)}
 .menu-open .mobnav a{opacity:1;transform:none}
-.menu-open .mobnav a:nth-child(1){transition-delay:.18s}
-.menu-open .mobnav a:nth-child(2){transition-delay:.25s}
-.menu-open .mobnav a:nth-child(3){transition-delay:.32s}
-.menu-open .mobnav a:nth-child(4){transition-delay:.39s}
-.menu-open .mobnav a:nth-child(5){transition-delay:.46s}
+.menu-open .mobnav a:nth-child(2){transition-delay:.18s}
+.menu-open .mobnav a:nth-child(3){transition-delay:.25s}
+.menu-open .mobnav a:nth-child(4){transition-delay:.32s}
+.menu-open .mobnav a:nth-child(5){transition-delay:.39s}
+.menu-open .mobnav a:nth-child(6){transition-delay:.46s}
 .mobnav .mobcta{font-family:var(--body);font-size:1rem;color:var(--teal);font-weight:600;letter-spacing:.04em;margin-top:1rem}
 
 /* ============ HERO ============ */
@@ -156,12 +164,6 @@ header.scrolled{
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.32;filter:saturate(.8)}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,32,38,.55),rgba(15,32,38,.15) 40%,rgba(15,32,38,.85))}
-/* drawn figure overlay */
-.hero-fig{position:absolute;top:50%;right:clamp(-4rem,2vw,4rem);transform:translateY(-50%);
-  width:clamp(280px,42vw,620px);z-index:1;opacity:.9;pointer-events:none}
-.hero-fig path{fill:none;stroke:var(--teal-soft);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:1600;stroke-dashoffset:1600}
-.loaded .hero-fig path{animation:draw 2.6s var(--ease) .3s forwards}
 .hero-inner{position:relative;z-index:2;width:100%}
 .hero-tag{overflow:hidden;margin-bottom:1.6rem}
 .hero-tag .eyebrow{color:var(--teal-soft);transform:translateY(110%);transition:transform .9s var(--ease) .2s}
@@ -206,14 +208,6 @@ header.scrolled{
 .scrollcue .bar::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--paper);animation:cue 2s infinite var(--ease)}
 @keyframes cue{0%{top:-100%}60%,100%{top:100%}}
 
-/* ============ MARQUEE ============ */
-.marquee{background:var(--petrol);color:var(--paper);padding:1.15rem 0;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.08)}
-.marquee-track{display:inline-flex;gap:0;will-change:transform;animation:scroll 32s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee-track span{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,3vw,1.9rem);padding-inline:1.5rem;display:inline-flex;align-items:center;gap:2.6rem}
-.marquee-track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal-soft);display:inline-block;flex:none}
-@keyframes scroll{to{transform:translateX(-50%)}}
-
 /* ============ SECTION BASE ============ */
 section{position:relative}
 .sec{padding-block:var(--pad)}
@@ -225,6 +219,10 @@ section{position:relative}
 .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}
+
+/* special reveal blur for effects */
+.reveal-blur{opacity:0;filter:blur(8px);transform:translateY(40px);transition:all 1.2s var(--ease)}
+.reveal-blur.in{opacity:1;filter:blur(0);transform:none}
 
 /* ============ ABOUT ============ */
 .about{background:var(--parchment)}
@@ -252,7 +250,15 @@ section{position:relative}
 .cred b{font-family:var(--display);font-size:1.05rem;color:var(--ink)}
 .cred span{font-size:.78rem;color:#647077}
 
-/* ============ PHILOSOPHY (signature dark band) ============ */
+/* ============ MARQUEE (Moved here) ============ */
+.marquee{background:var(--petrol);color:var(--paper);padding:1.15rem 0;overflow:hidden;white-space:nowrap;border-block:1px solid rgba(255,255,255,.08)}
+.marquee-track{display:inline-flex;gap:0;will-change:transform;animation:scroll 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem,3vw,1.9rem);padding-inline:1.5rem;display:inline-flex;align-items:center;gap:2.6rem}
+.marquee-track span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal-soft);display:inline-block;flex:none}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============ PHILOSOPHY ============ */
 .philo{background:var(--ink);color:var(--paper);overflow:hidden;position:relative}
 .philo::before{
   content:"";position:absolute;top:-30%;right:-10%;width:60vw;height:120%;
@@ -272,41 +278,53 @@ section{position:relative}
 .philo-card h3{font-size:1.3rem;color:var(--paper);margin-bottom:.7rem;font-weight:500}
 .philo-card p{color:rgba(244,239,230,.6);font-size:.92rem}
 
-/* ============ SERVICES ============ */
+/* ============ SERVICES (CHIC LIST REDESIGN) ============ */
 .serv{background:var(--paper)}
-.serv-list{border-top:1px solid var(--line)}
-.serv-item{border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
-.serv-item:hover{background:var(--parchment)}
-.serv-q{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(1rem,3vw,2.5rem);align-items:center;
-  padding:clamp(1.5rem,3vw,2.3rem) clamp(.5rem,2vw,1.5rem);text-align:left;width:100%}
-.serv-q .sn{font-family:var(--display);font-size:1rem;color:var(--teal)}
-.serv-q h3{font-size:clamp(1.3rem,3vw,2.1rem);font-weight:400;transition:color .4s;line-height:1.05}
-.serv-item:hover .serv-q h3,.serv-item.open .serv-q h3{color:var(--petrol)}
-.serv-q .plus{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);position:relative;flex:none;transition:.45s var(--ease)}
-.serv-item.open .serv-q .plus{background:var(--petrol);border-color:var(--petrol);transform:rotate(135deg)}
-.serv-q .plus::before,.serv-q .plus::after{content:"";position:absolute;top:50%;left:50%;background:var(--petrol);transition:background .4s}
-.serv-q .plus::before{width:12px;height:1.5px;transform:translate(-50%,-50%)}
-.serv-q .plus::after{width:1.5px;height:12px;transform:translate(-50%,-50%)}
-.serv-item.open .serv-q .plus::before,.serv-item.open .serv-q .plus::after{background:var(--paper)}
-.serv-a{max-height:0;overflow:hidden;transition:max-height .6s var(--ease)}
-.serv-a-inner{padding:0 clamp(.5rem,2vw,1.5rem) clamp(1.8rem,3vw,2.3rem);
-  display:grid;grid-template-columns:auto 1fr;gap:clamp(1rem,3vw,2.5rem)}
-.serv-a-inner .spacer{width:1rem}
-.serv-a p{max-width:64ch;color:#3a4a50}
+.serv-list{display:flex;flex-direction:column;margin-top:3rem}
+.serv-row{
+  display:grid;grid-template-columns:80px 1fr 1.5fr;gap:2rem;
+  padding:3.5rem 0;border-bottom:1px solid var(--line);
+  position:relative;transition:all .5s var(--ease);
+}
+.serv-row:first-of-type{border-top:1px solid var(--line)}
+.serv-row::before{
+  content:"";position:absolute;inset:0 -2rem;background:rgba(143,192,205,.1);
+  z-index:0;opacity:0;transform:scaleY(0.9);border-radius:12px;
+  transition:all .5s var(--ease);pointer-events:none;
+}
+.serv-row:hover::before{opacity:1;transform:scaleY(1)}
+.sr-inner{position:relative;z-index:1;display:contents}
+.sr-num{font-family:var(--display);font-size:1.4rem;color:var(--teal);font-weight:400;margin-top:.3rem}
+.sr-title h3{
+  font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;line-height:1.15;
+  color:var(--ink);transition:all .5s var(--ease);
+}
+.serv-row:hover .sr-title h3{color:var(--petrol);transform:translateX(10px)}
+.sr-desc p{color:#3a4a50;font-size:1.05rem;line-height:1.6;max-width:55ch}
 
-/* ============ PROCESS ============ */
+/* ============ PROCESS (CHIC ANIMATED REDESIGN) ============ */
 .proc{background:var(--petrol);color:var(--paper);overflow:hidden}
 .proc .eyebrow{color:var(--teal-soft)}.proc .eyebrow::before{background:var(--teal-soft)}
-.proc-head h2{color:var(--paper);font-weight:300;font-size:clamp(2rem,5vw,3.4rem);margin-top:1rem}
+.proc-head h2{color:var(--paper);font-weight:300;font-size:clamp(2.4rem,5vw,3.8rem);margin-top:1rem}
 .proc-head h2 em{font-style:italic;color:var(--teal-soft)}
-.proc-track{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,3vw,2.5rem);margin-top:clamp(2.5rem,5vw,4rem);position:relative}
-.proc-track::before{content:"";position:absolute;top:34px;left:5%;right:5%;height:1px;
-  background:repeating-linear-gradient(90deg,var(--teal-soft) 0 6px,transparent 6px 14px);opacity:.4}
-.proc-step{position:relative}
-.proc-step .dot{width:68px;height:68px;border-radius:50%;background:var(--ink);border:1px solid rgba(244,239,230,.2);
-  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.5rem;color:var(--teal-soft);position:relative;z-index:1}
-.proc-step h3{font-size:1.2rem;margin:1.3rem 0 .6rem;color:var(--paper);font-weight:500}
-.proc-step p{color:rgba(244,239,230,.62);font-size:.9rem}
+
+.proc-stack{display:flex;flex-direction:column;gap:clamp(3rem,8vw,6rem);margin-top:clamp(4rem,8vw,6rem)}
+.proc-card{display:flex;align-items:center;justify-content:space-between;gap:3rem;position:relative}
+.proc-card:nth-child(even){flex-direction:row-reverse;text-align:right}
+
+.pc-vis{flex:1;display:flex;justify-content:center;position:relative}
+.pc-vis .pc-bg{
+  font-family:var(--display);font-size:clamp(8rem,22vw,18rem);font-weight:600;
+  color:rgba(244,239,230,.04);line-height:0.8;transition:all 1s var(--ease);
+  user-select:none;
+}
+.proc-card:hover .pc-vis .pc-bg{
+  color:rgba(143,192,205,.18);transform:scale(1.08) translateY(-10px);
+}
+.pc-content{flex:1;position:relative;z-index:2}
+.pc-content h3{font-size:clamp(1.8rem,4vw,2.8rem);color:var(--paper);font-weight:300;margin-bottom:1.2rem}
+.pc-content p{color:rgba(244,239,230,.7);font-size:1.1rem;max-width:48ch;line-height:1.7}
+.proc-card:nth-child(even) .pc-content p{margin-left:auto}
 
 /* ============ GALLERY ============ */
 .gal{background:var(--parchment)}
@@ -333,9 +351,9 @@ section{position:relative}
 .lb.open{opacity:1;visibility:visible}
 .lb img{max-width:90vw;max-height:85vh;border-radius:6px;transform:scale(.95);transition:transform .5s var(--ease)}
 .lb.open img{transform:scale(1)}
-.lb-close{position:absolute;top:1.5rem;right:1.5rem;width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,239,230,.3);color:var(--paper);font-size:1.4rem;display:flex;align-items:center;justify-content:center;transition:.3s}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,239,230,.3);color:var(--paper);font-size:1.4rem;display:flex;align-items:center;justify-content:center;transition:.3s;cursor:pointer}
 .lb-close:hover{background:rgba(244,239,230,.12)}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid rgba(244,239,230,.3);color:var(--paper);font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:.3s}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid rgba(244,239,230,.3);color:var(--paper);font-size:1.5rem;display:flex;align-items:center;justify-content:center;transition:.3s;cursor:pointer}
 .lb-nav:hover{background:rgba(244,239,230,.12)}
 .lb-prev{left:1.5rem}.lb-next{right:1.5rem}
 
@@ -435,8 +453,11 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   .about-photo{max-width:420px}
   .philo-head{grid-template-columns:1fr}
   .philo-grid{grid-template-columns:1fr}
-  .proc-track{grid-template-columns:1fr 1fr}
-  .proc-track::before{display:none}
+  .serv-row{grid-template-columns:1fr;gap:1rem;padding:2.5rem 0}
+  .sr-num{margin-bottom:-0.5rem}
+  .proc-card, .proc-card:nth-child(even){flex-direction:column;text-align:left;gap:1.5rem}
+  .proc-card:nth-child(even) .pc-content p{margin-left:0}
+  .pc-vis{justify-content:flex-start;width:100%}
   .faq-wrap{grid-template-columns:1fr;gap:2rem}
   .contact-grid{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:repeat(4,1fr)}
@@ -447,36 +468,28 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   .navlinks{display:none}
   .burger{display:flex}
   .langtog{display:none}
-  .proc-track{grid-template-columns:1fr}
   .gal-grid{grid-template-columns:repeat(2,1fr)}
   .g1{grid-column:span 2;grid-row:span 2}
   .g2,.g3,.g4,.g5,.g6{grid-column:span 1}
   .about-photo .badge{left:0}
   .rev-arrows{display:none}
-  .serv-a-inner{grid-template-columns:1fr}
-  .serv-a-inner .spacer{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+  .reveal, .reveal-blur{opacity:1;transform:none;filter:blur(0)}
   .hero h1 .ln span,.hero-tag .eyebrow,.hero-sub,.hero-actions{transform:none;opacity:1}
-  #loader .figpath,.hero-fig path{stroke-dashoffset:0}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ PRELOADER ============ -->
 <div id="loader" aria-hidden="true">
-  <svg viewBox="0 0 200 200" aria-hidden="true">
-    <path class="figpath" d="M100 40 a14 14 0 1 0 .1 0 M100 68 L100 118 M100 80 L58 95 M100 80 L142 95 M100 118 L72 168 M100 118 L128 168"/>
-  </svg>
+  <img class="ldlogo" src="https://raw.githubusercontent.com/agelmet/LOULOU/67181daf9f438d2a6b8662f36a6df749b3f191b1/417524277_795423722606229_3060773725659999764_n.jpg" alt="Χρυσάνθη Λουλού Logo">
   <div class="ldname">Χρυσάνθη Λουλού</div>
   <div class="ldsub" data-lang="el">Φυσικοθεραπεία · MSc</div>
   <div class="ldsub" data-lang="en" hidden>Physiotherapy · MSc</div>
 </div>
 
-<!-- ============ NAV ============ -->
 <header id="hdr">
   <div class="wrap navbar">
     <a href="#top" class="brand" aria-label="Χρυσάνθη Λουλού — Αρχική">
@@ -500,6 +513,7 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
 </header>
 
 <nav class="mobnav" id="mobnav" aria-label="Mobile">
+  <button class="mob-close" id="mobClose" aria-label="Κλείσιμο">&times;</button>
   <a href="#about" data-lang="el">Προφίλ</a><a href="#about" data-lang="en" hidden>Profile</a>
   <a href="#services" data-lang="el">Υπηρεσίες</a><a href="#services" data-lang="en" hidden>Services</a>
   <a href="#process" data-lang="el">Διαδικασία</a><a href="#process" data-lang="en" hidden>Process</a>
@@ -509,14 +523,10 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
 
 <main id="top">
 
-<!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="hero-bg">
     <img src="https://raw.githubusercontent.com/agelmet/LOULOU/67181daf9f438d2a6b8662f36a6df749b3f191b1/unnamed-43.jpg" alt="Ο χώρος του φυσικοθεραπευτηρίου" loading="eager">
   </div>
-  <svg class="hero-fig" viewBox="0 0 300 400" aria-hidden="true">
-    <path d="M150 50 a20 20 0 1 0 .1 0 M150 90 L150 200 M150 110 L80 150 M150 110 L220 150 M150 200 L105 320 M150 200 L195 320 M105 320 L92 360 M195 320 L208 360"/>
-  </svg>
   <div class="wrap hero-inner">
     <div class="hero-tag"><span class="eyebrow" data-lang="el">Σύγχρονη Φυσικοθεραπεία · MSc</span><span class="eyebrow" data-lang="en" hidden>Modern Physiotherapy · MSc</span></div>
     <h1>
@@ -539,15 +549,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   <div class="scrollcue"><span data-lang="el">Κυλήστε</span><span data-lang="en" hidden>Scroll</span><span class="bar"></span></div>
 </section>
 
-<!-- ============ MARQUEE ============ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="marq">
-    <span data-lang="el">Manual Therapy</span><span data-lang="el">Θεραπευτική Άσκηση</span><span data-lang="el">Αθλητική Αποκατάσταση</span><span data-lang="el">Κλινική Αξιολόγηση</span><span data-lang="el">Ορθοπεδική Αποκατάσταση</span><span data-lang="el">Αυτοδιαχείριση Πόνου</span>
-    <span data-lang="en" hidden>Manual Therapy</span><span data-lang="en" hidden>Therapeutic Exercise</span><span data-lang="en" hidden>Sports Rehabilitation</span><span data-lang="en" hidden>Clinical Assessment</span><span data-lang="en" hidden>Orthopaedic Rehab</span><span data-lang="en" hidden>Pain Self-Management</span>
-  </div>
-</div>
-
-<!-- ============ ABOUT ============ -->
 <section class="sec about" id="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
@@ -575,7 +576,13 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </section>
 
-<!-- ============ PHILOSOPHY ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marq">
+    <span data-lang="el">Manual Therapy</span><span data-lang="el">Θεραπευτική Άσκηση</span><span data-lang="el">Αθλητική Αποκατάσταση</span><span data-lang="el">Κλινική Αξιολόγηση</span><span data-lang="el">Ορθοπεδική Αποκατάσταση</span><span data-lang="el">Αυτοδιαχείριση Πόνου</span>
+    <span data-lang="en" hidden>Manual Therapy</span><span data-lang="en" hidden>Therapeutic Exercise</span><span data-lang="en" hidden>Sports Rehabilitation</span><span data-lang="en" hidden>Clinical Assessment</span><span data-lang="en" hidden>Orthopaedic Rehab</span><span data-lang="en" hidden>Pain Self-Management</span>
+  </div>
+</div>
+
 <section class="sec philo" id="philosophy">
   <div class="wrap">
     <div class="philo-head">
@@ -613,7 +620,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
 <section class="sec serv" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -621,60 +627,67 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
       <h2 data-lang="el">Φροντίδα <em>σχεδιασμένη</em> γύρω από εσάς.</h2>
       <h2 data-lang="en" hidden>Care <em>designed</em> around you.</h2>
     </div>
-    <div class="serv-list reveal d1" id="servList">
-      <div class="serv-item open">
-        <button class="serv-q" aria-expanded="true">
-          <span class="sn">01</span>
-          <h3 data-lang="el">Κλινική Αξιολόγηση & Εξατομικευμένο Πρόγραμμα</h3>
-          <h3 data-lang="en" hidden>Clinical Assessment & Personalized Program</h3>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="serv-a"><div class="serv-a-inner"><span class="spacer"></span>
-          <p data-lang="el">Η σωστή θεραπεία ξεκινά πάντα από τη σωστή διάγνωση. Δεν εφαρμόζουμε «έτοιμες συνταγές». Σε κάθε νέα επίσκεψη πραγματοποιείται λεπτομερής κλινική αξιολόγηση του μυοσκελετικού και νευρικού συστήματος. Βάσει των ευρημάτων, του ιατρικού ιστορικού και των προσωπικών σας στόχων, σχεδιάζουμε ένα απολύτως εξατομικευμένο πρόγραμμα αποκατάστασης, προσαρμοσμένο αποκλειστικά στις δικές σας ανάγκες.</p>
-          <p data-lang="en" hidden>Correct treatment always starts with correct diagnosis. We don't apply "ready-made recipes." Every new visit includes a detailed clinical assessment of the musculoskeletal and nervous system. Based on the findings, your medical history and your personal goals, we design a fully personalized rehabilitation program, tailored exclusively to your needs.</p>
-        </div></div>
+    
+    <div class="serv-list">
+      <div class="serv-row reveal d1">
+        <div class="sr-inner">
+          <div class="sr-num">01</div>
+          <div class="sr-title">
+            <h3 data-lang="el">Κλινική Αξιολόγηση &<br> Εξατομικευμένο Πρόγραμμα</h3>
+            <h3 data-lang="en" hidden>Clinical Assessment &<br> Personalized Program</h3>
+          </div>
+          <div class="sr-desc">
+            <p data-lang="el">Η σωστή θεραπεία ξεκινά πάντα από τη σωστή διάγνωση. Δεν εφαρμόζουμε «έτοιμες συνταγές». Σε κάθε νέα επίσκεψη πραγματοποιείται λεπτομερής κλινική αξιολόγηση του μυοσκελετικού και νευρικού συστήματος. Βάσει των ευρημάτων, του ιατρικού ιστορικού και των προσωπικών σας στόχων, σχεδιάζουμε ένα απολύτως εξατομικευμένο πρόγραμμα αποκατάστασης.</p>
+            <p data-lang="en" hidden>Correct treatment always starts with correct diagnosis. We don't apply "ready-made recipes." Every new visit includes a detailed clinical assessment of the musculoskeletal and nervous system. Based on the findings, your medical history and your personal goals, we design a fully personalized rehabilitation program.</p>
+          </div>
+        </div>
       </div>
-      <div class="serv-item">
-        <button class="serv-q" aria-expanded="false">
-          <span class="sn">02</span>
-          <h3 data-lang="el">Manual Therapy & Ορθοπεδική Αποκατάσταση</h3>
-          <h3 data-lang="en" hidden>Manual Therapy & Orthopaedic Rehab</h3>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="serv-a"><div class="serv-a-inner"><span class="spacer"></span>
-          <p data-lang="el">Με εξειδικευμένες τεχνικές Manual Therapy προσεγγίζουμε τον πόνο και τη δυσκαμψία με τα χέρια, κινητοποιώντας τις αρθρώσεις, τους μύες και τα νεύρα. Σε συνδυασμό με την τεράστια εμπειρία μας από κέντρα αποκατάστασης, αναλαμβάνουμε τη μετεγχειρητική πορεία ασθενών — π.χ. επανεκπαίδευση ανεξάρτητης βάδισης σε ολική αρθροπλαστική ισχίου — αποκαθιστώντας το πλήρες εύρος κίνησης.</p>
-          <p data-lang="en" hidden>With specialised Manual Therapy techniques we address pain and stiffness by hand, mobilising joints, muscles and nerves. Combined with extensive rehabilitation-centre experience, we manage post-operative recovery — e.g. re-educating independent gait after total hip replacement — restoring full range of motion.</p>
-        </div></div>
+
+      <div class="serv-row reveal d1">
+        <div class="sr-inner">
+          <div class="sr-num">02</div>
+          <div class="sr-title">
+            <h3 data-lang="el">Manual Therapy &<br> Ορθοπεδική Αποκατάσταση</h3>
+            <h3 data-lang="en" hidden>Manual Therapy &<br> Orthopaedic Rehab</h3>
+          </div>
+          <div class="sr-desc">
+            <p data-lang="el">Με εξειδικευμένες τεχνικές Manual Therapy προσεγγίζουμε τον πόνο και τη δυσκαμψία με τα χέρια, κινητοποιώντας τις αρθρώσεις, τους μύες και τα νεύρα. Σε συνδυασμό με την τεράστια εμπειρία μας, αναλαμβάνουμε τη μετεγχειρητική πορεία ασθενών — π.χ. επανεκπαίδευση ανεξάρτητης βάδισης σε ολική αρθροπλαστική ισχίου — αποκαθιστώντας το πλήρες εύρος κίνησης.</p>
+            <p data-lang="en" hidden>With specialised Manual Therapy techniques we address pain and stiffness by hand, mobilising joints, muscles and nerves. Combined with extensive experience, we manage post-operative recovery — e.g. re-educating independent gait after total hip replacement — restoring full range of motion.</p>
+          </div>
+        </div>
       </div>
-      <div class="serv-item">
-        <button class="serv-q" aria-expanded="false">
-          <span class="sn">03</span>
-          <h3 data-lang="el">Θεραπευτική Άσκηση & Αθλητική Φυσικοθεραπεία</h3>
-          <h3 data-lang="en" hidden>Therapeutic Exercise & Sports Physiotherapy</h3>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="serv-a"><div class="serv-a-inner"><span class="spacer"></span>
-          <p data-lang="el">Αξιοποιώντας το Μεταπτυχιακό (MSc) στην «Εφαρμοσμένη Φυσιολογία στον Αθλητισμό», παρέχουμε κορυφαία υποστήριξη σε ερασιτέχνες και επαγγελματίες αθλητές. Η θεραπευτική άσκηση χρησιμοποιείται ως το βασικότερο «φάρμακο» για την επούλωση ιστών, τη διαχείριση αθλητικών κακώσεων και τη μυϊκή ενδυνάμωση, θωρακίζοντας το σώμα απέναντι σε μελλοντικούς τραυματισμούς.</p>
-          <p data-lang="en" hidden>Drawing on the MSc in "Applied Physiology in Sport," we provide top-level support to amateur and professional athletes. Therapeutic exercise is used as the primary "medicine" for tissue healing, sports-injury management and muscle strengthening, fortifying the body against future injury.</p>
-        </div></div>
+
+      <div class="serv-row reveal d1">
+        <div class="sr-inner">
+          <div class="sr-num">03</div>
+          <div class="sr-title">
+            <h3 data-lang="el">Θεραπευτική Άσκηση &<br> Αθλητική Φυσικοθεραπεία</h3>
+            <h3 data-lang="en" hidden>Therapeutic Exercise &<br> Sports Physiotherapy</h3>
+          </div>
+          <div class="sr-desc">
+            <p data-lang="el">Αξιοποιώντας το Μεταπτυχιακό (MSc) στην «Εφαρμοσμένη Φυσιολογία στον Αθλητισμό», παρέχουμε κορυφαία υποστήριξη σε ερασιτέχνες και επαγγελματίες αθλητές. Η θεραπευτική άσκηση χρησιμοποιείται ως το βασικότερο «φάρμακο» για την επούλωση ιστών, τη διαχείριση αθλητικών κακώσεων και τη μυϊκή ενδυνάμωση.</p>
+            <p data-lang="en" hidden>Drawing on the MSc in "Applied Physiology in Sport," we provide top-level support to amateur and professional athletes. Therapeutic exercise is used as the primary "medicine" for tissue healing, sports-injury management and muscle strengthening.</p>
+          </div>
+        </div>
       </div>
-      <div class="serv-item">
-        <button class="serv-q" aria-expanded="false">
-          <span class="sn">04</span>
-          <h3 data-lang="el">Αυτοδιαχείριση Πόνου & Υδροθεραπεία</h3>
-          <h3 data-lang="en" hidden>Pain Self-Management & Hydrotherapy</h3>
-          <span class="plus" aria-hidden="true"></span>
-        </button>
-        <div class="serv-a"><div class="serv-a-inner"><span class="spacer"></span>
-          <p data-lang="el">Ο χρόνιος πόνος επηρεάζει καθοριστικά την ποιότητα ζωής. Στοχεύουμε στην εκπαίδευση του ασθενούς, παρέχοντας τεχνικές και ασκήσεις αυτοδιαχείρισης του πόνου για το σπίτι ή την εργασία. Επιπλέον, οι γνώσεις μας στην Υδροθεραπεία και η εμπειρία μας στα νευρολογικά περιστατικά εξασφαλίζουν μια ολιστική προσέγγιση σε καταστάσεις που απαιτούν ήπια, προστατευμένη κινητοποίηση.</p>
-          <p data-lang="en" hidden>Chronic pain decisively affects quality of life. We focus on educating the patient, providing pain self-management techniques and exercises for home or work. Additionally, our knowledge of Hydrotherapy and our experience with neurological cases ensure a holistic approach to conditions requiring gentle, protected mobilisation.</p>
-        </div></div>
+
+      <div class="serv-row reveal d1">
+        <div class="sr-inner">
+          <div class="sr-num">04</div>
+          <div class="sr-title">
+            <h3 data-lang="el">Αυτοδιαχείριση Πόνου &<br> Υδροθεραπεία</h3>
+            <h3 data-lang="en" hidden>Pain Self-Management &<br> Hydrotherapy</h3>
+          </div>
+          <div class="sr-desc">
+            <p data-lang="el">Ο χρόνιος πόνος επηρεάζει καθοριστικά την ποιότητα ζωής. Στοχεύουμε στην εκπαίδευση του ασθενούς, παρέχοντας τεχνικές και ασκήσεις αυτοδιαχείρισης του πόνου. Επιπλέον, οι γνώσεις μας στην Υδροθεραπεία και στα νευρολογικά περιστατικά εξασφαλίζουν μια ολιστική προσέγγιση σε καταστάσεις που απαιτούν προστατευμένη κινητοποίηση.</p>
+            <p data-lang="en" hidden>Chronic pain decisively affects quality of life. We focus on educating the patient, providing pain self-management techniques. Additionally, our knowledge of Hydrotherapy and neurological cases ensure a holistic approach to conditions requiring protected mobilisation.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
 <section class="sec proc" id="process">
   <div class="wrap">
     <div class="proc-head">
@@ -682,36 +695,47 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
       <h2 class="reveal d1" data-lang="el">Από τον πόνο, <em>πίσω στην κίνηση.</em></h2>
       <h2 class="reveal d1" data-lang="en" hidden>From pain, <em>back to movement.</em></h2>
     </div>
-    <div class="proc-track">
-      <div class="proc-step reveal">
-        <div class="dot">01</div>
-        <h3 data-lang="el">Αξιολόγηση</h3><h3 data-lang="en" hidden>Assessment</h3>
-        <p data-lang="el">Λεπτομερής κλινική αξιολόγηση του μυοσκελετικού και νευρικού συστήματος, με βάση το ιστορικό σας.</p>
-        <p data-lang="en" hidden>Detailed clinical assessment of the musculoskeletal and nervous system, based on your history.</p>
+    
+    <div class="proc-stack">
+      <div class="proc-card reveal-blur d1">
+        <div class="pc-vis"><div class="pc-bg">01</div></div>
+        <div class="pc-content">
+          <h3 data-lang="el">Αξιολόγηση</h3><h3 data-lang="en" hidden>Assessment</h3>
+          <p data-lang="el">Κάθε διαδρομή ξεκινά με την κατανόηση του προβλήματος. Πραγματοποιούμε μια λεπτομερή κλινική αξιολόγηση του μυοσκελετικού και νευρικού συστήματος, εξετάζοντας προσεκτικά το ιατρικό σας ιστορικό και τους προσωπικούς σας στόχους.</p>
+          <p data-lang="en" hidden>Every journey starts with understanding the problem. We conduct a detailed clinical assessment of the musculoskeletal and nervous system, carefully examining your medical history and personal goals.</p>
+        </div>
       </div>
-      <div class="proc-step reveal d1">
-        <div class="dot">02</div>
-        <h3 data-lang="el">Σχεδιασμός</h3><h3 data-lang="en" hidden>Design</h3>
-        <p data-lang="el">Ένα απολύτως εξατομικευμένο πρόγραμμα αποκατάστασης, στοχευμένο στους δικούς σας στόχους.</p>
-        <p data-lang="en" hidden>A fully personalized rehabilitation program, targeted to your own goals.</p>
+      
+      <div class="proc-card reveal-blur d2">
+        <div class="pc-vis"><div class="pc-bg">02</div></div>
+        <div class="pc-content">
+          <h3 data-lang="el">Σχεδιασμός</h3><h3 data-lang="en" hidden>Design</h3>
+          <p data-lang="el">Δεν υπάρχουν γενικές λύσεις. Με βάση τα ευρήματα της αξιολόγησης, δομούμε ένα απολύτως εξατομικευμένο και στοχευμένο πρόγραμμα αποκατάστασης, προσαρμοσμένο ακριβώς στον τρόπο ζωής σας.</p>
+          <p data-lang="en" hidden>There are no generic solutions. Based on the assessment findings, we structure a fully personalized and targeted rehabilitation program, tailored exactly to your lifestyle.</p>
+        </div>
       </div>
-      <div class="proc-step reveal d2">
-        <div class="dot">03</div>
-        <h3 data-lang="el">Θεραπεία</h3><h3 data-lang="en" hidden>Treatment</h3>
-        <p data-lang="el">Manual Therapy και θεραπευτική άσκηση — ενεργητική αποκατάσταση που λύνει το πρόβλημα στη ρίζα.</p>
-        <p data-lang="en" hidden>Manual Therapy and therapeutic exercise — active rehabilitation that solves the problem at the root.</p>
+
+      <div class="proc-card reveal-blur d3">
+        <div class="pc-vis"><div class="pc-bg">03</div></div>
+        <div class="pc-content">
+          <h3 data-lang="el">Θεραπεία</h3><h3 data-lang="en" hidden>Treatment</h3>
+          <p data-lang="el">Περνάμε στην πράξη μέσω ενεργητικής αποκατάστασης. Αξιοποιώντας εξελιγμένες τεχνικές Manual Therapy και θεραπευτική άσκηση, στοχεύουμε στην άμεση αντιμετώπιση του πόνου λύνοντας το πρόβλημα ριζικά.</p>
+          <p data-lang="en" hidden>We move to action through active rehabilitation. Utilizing advanced Manual Therapy techniques and therapeutic exercise, we aim to immediately address pain by solving the problem fundamentally.</p>
+        </div>
       </div>
-      <div class="proc-step reveal d3">
-        <div class="dot">04</div>
-        <h3 data-lang="el">Αυτονομία</h3><h3 data-lang="en" hidden>Autonomy</h3>
-        <p data-lang="el">Εργαλεία και ασκήσεις αυτοδιαχείρισης, ώστε να ελέγχετε εσείς το σώμα σας στην καθημερινότητα.</p>
-        <p data-lang="en" hidden>Self-management tools and exercises, so you control your own body in everyday life.</p>
+
+      <div class="proc-card reveal-blur d4">
+        <div class="pc-vis"><div class="pc-bg">04</div></div>
+        <div class="pc-content">
+          <h3 data-lang="el">Αυτονομία</h3><h3 data-lang="en" hidden>Autonomy</h3>
+          <p data-lang="el">Η επιτυχία της θεραπείας είναι να μη μας χρειάζεστε. Σας οπλίζουμε με τα απαραίτητα εργαλεία, συμβουλές και ασκήσεις αυτοδιαχείρισης, ώστε να διατηρήσετε την ευεξία σας και να έχετε εσείς τον έλεγχο.</p>
+          <p data-lang="en" hidden>The success of the treatment is that you don't need us. We arm you with the necessary tools, advice, and self-management exercises so you maintain your wellness and stay in control.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ GALLERY ============ -->
 <section class="sec gal" id="gallery">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -730,7 +754,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </section>
 
-<!-- ============ REVIEWS ============ -->
 <section class="sec rev" id="reviews">
   <div class="wrap">
     <div class="rev-top">
@@ -761,7 +784,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
 <section class="sec faq" id="faq">
   <div class="wrap faq-wrap">
     <div class="reveal">
@@ -772,7 +794,7 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
     <div class="faq-list reveal d1" id="faqList">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span data-lang="el">Πώς κλείνω ραντεβού;</span><span data-lang="en" hidden>How do I book an appointment?</span><span class="ic" aria-hidden="true"></span></button>
-        <div class="faq-a"><p data-lang="el">Το φυσικοθεραπευτήριο λειτουργεί αποκλειστικά κατόπιν ραντεβού. Επικοινωνήστε τηλεφωνικά ή μέσω των κοινωνικών μας δικτύων για να κλείσετε την επίσκεψή σας στη Θεσσαλονίκη ή στον Σοχό.</p><p data-lang="en" hidden>The practice operates strictly by appointment. Contact us by phone or through our social media to book your visit in Thessaloniki or Sochos.</p></div>
+        <div class="faq-a"><p data-lang="el">Το φυσικοθεραπευτήριο λειτουργεί αποκλειστικά κατόπιν ραντεβού. Επικοινωνήστε τηλεφωνικά ή μέσω των κοινωνικών μας δικτύων για να κλείσετε την επίσκεψή σας.</p><p data-lang="en" hidden>The practice operates strictly by appointment. Contact us by phone or through our social media to book your visit.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span data-lang="el">Σε τι διαφέρει η «ενεργητική» φυσικοθεραπεία;</span><span data-lang="en" hidden>How is "active" physiotherapy different?</span><span class="ic" aria-hidden="true"></span></button>
@@ -783,10 +805,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
         <div class="faq-a"><p data-lang="el">Ναι. Με πολυετή εμπειρία σε κέντρα αποκατάστασης και Μεταπτυχιακό στην αθλητική φυσιολογία, αναλαμβάνουμε από μετεγχειρητική επανεκπαίδευση βάδισης έως την αποκατάσταση ερασιτεχνών και επαγγελματιών αθλητών.</p><p data-lang="en" hidden>Yes. With years of experience in rehabilitation centres and an MSc in sports physiology, we handle everything from post-operative gait re-education to the rehabilitation of amateur and professional athletes.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-lang="el">Πού βρίσκονται τα φυσικοθεραπευτήρια;</span><span data-lang="en" hidden>Where are the practices located?</span><span class="ic" aria-hidden="true"></span></button>
-        <div class="faq-a"><p data-lang="el">Διατηρούμε δύο σύγχρονα φυσικοθεραπευτήρια: στη Θεσσαλονίκη (Μπότσαρη 91) και στον Σοχό. Μπορείτε να κλείσετε ραντεβού σε όποιο εξυπηρετεί καλύτερα.</p><p data-lang="en" hidden>We maintain two modern practices: in Thessaloniki (Botsari 91) and in Sochos. You can book at whichever suits you best.</p></div>
-      </div>
-      <div class="faq-item">
         <button class="faq-q" aria-expanded="false"><span data-lang="el">Θα μου δοθούν ασκήσεις για το σπίτι;</span><span data-lang="en" hidden>Will I get exercises for home?</span><span class="ic" aria-hidden="true"></span></button>
         <div class="faq-a"><p data-lang="el">Απολύτως. Στόχος μας είναι η αυτονομία σας: σας εκπαιδεύουμε σε τεχνικές και ασκήσεις αυτοδιαχείρισης του πόνου, ώστε να ελέγχετε εσείς το σώμα σας — στο σπίτι, στο γραφείο ή στην προπόνηση.</p><p data-lang="en" hidden>Absolutely. Our goal is your autonomy: we train you in pain self-management techniques and exercises, so you control your own body — at home, the office or in training.</p></div>
       </div>
@@ -794,7 +812,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
 <section class="sec contact" id="contact">
   <div class="wrap contact-grid">
     <div class="reveal">
@@ -820,20 +837,12 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Botsari+91+Thessaloniki+Physiotherapy+Loulou" target="_blank" rel="noopener" data-lang="el">Δείτε στον χάρτη →</a>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Botsari+91+Thessaloniki+Physiotherapy+Loulou" target="_blank" rel="noopener" data-lang="en" hidden>View on map →</a>
       </div>
-      <div class="loc">
-        <h3><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> Σοχός</h3>
-        <div class="row"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/></svg> <span data-lang="el">Σοχός, Θεσσαλονίκη</span><span data-lang="en" hidden>Sochos, Thessaloniki</span></div>
-        <div class="row"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <span data-lang="el">Μόνο κατόπιν ραντεβού</span><span data-lang="en" hidden>By appointment only</span></div>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sochos+Thessaloniki+Physiotherapy+Loulou" target="_blank" rel="noopener" data-lang="el">Δείτε στον χάρτη →</a>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sochos+Thessaloniki+Physiotherapy+Loulou" target="_blank" rel="noopener" data-lang="en" hidden>View on map →</a>
-      </div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
     <div class="foot-in">
@@ -857,7 +866,6 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   </div>
 </footer>
 
-<!-- ============ LIGHTBOX ============ -->
 <div class="lb" id="lb" aria-hidden="true">
   <button class="lb-close" id="lbClose" aria-label="Κλείσιμο">×</button>
   <button class="lb-nav lb-prev" id="lbPrev" aria-label="Προηγούμενη">‹</button>
@@ -895,6 +903,7 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
     document.body.style.overflow=open?'hidden':'';
   };
   burger.addEventListener('click',()=>toggleMenu());
+  $('#mobClose').addEventListener('click', ()=>toggleMenu(false));
   $$('#mobnav a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
 
   /* ---- language toggle ---- */
@@ -910,27 +919,11 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
   const io=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
   },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
-  $$('.reveal').forEach(el=>io.observe(el));
+  $$('.reveal, .reveal-blur').forEach(el=>io.observe(el));
 
   /* ---- marquee duplicate for seamless loop ---- */
   const marq=$('#marq');
   if(marq){marq.innerHTML+=marq.innerHTML;}
-
-  /* ---- services accordion ---- */
-  $$('#servList .serv-item').forEach(item=>{
-    const q=$('.serv-q',item),a=$('.serv-a',item);
-    const set=(open)=>{
-      item.classList.toggle('open',open);
-      q.setAttribute('aria-expanded',open);
-      a.style.maxHeight=open?a.scrollHeight+'px':'0px';
-    };
-    if(item.classList.contains('open')){requestAnimationFrame(()=>set(true));}
-    q.addEventListener('click',()=>{
-      const isOpen=item.classList.contains('open');
-      $$('#servList .serv-item').forEach(o=>{if(o!==item){o.classList.remove('open');$('.serv-q',o).setAttribute('aria-expanded',false);$('.serv-a',o).style.maxHeight='0px';}});
-      set(!isOpen);
-    });
-  });
 
   /* ---- FAQ accordion ---- */
   $$('#faqList .faq-item').forEach(item=>{
@@ -941,10 +934,10 @@ footer{background:var(--ink);color:rgba(244,239,230,.6);padding:3rem 0 2.4rem}
       if(open){item.classList.add('open');q.setAttribute('aria-expanded',true);a.style.maxHeight=a.scrollHeight+'px';}
     });
   });
-  // recalc open accordion heights on resize
+  
   let rt;
   window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{
-    $$('.serv-item.open .serv-a, .faq-item.open .faq-a').forEach(a=>a.style.maxHeight=a.scrollHeight+'px');
+    $$('.faq-item.open .faq-a').forEach(a=>a.style.maxHeight=a.scrollHeight+'px');
   },150);},{passive:true});
 
   /* ---- reviews data ---- */
